@@ -5,7 +5,6 @@ const DiaryForm = ({ uid }) => {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
   const { addDocument, response } = useFirestore("diary");
-  console.log(response);
 
   const handleData = (e) => {
     if (e.target.id === "tit") {
@@ -28,31 +27,29 @@ const DiaryForm = ({ uid }) => {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <fieldset>
-          <legend>일기 쓰기</legend>
-          <label htmlFor="tit">일기 제목 : </label>
-          <input
-            value={title}
-            type="text"
-            required
-            id="tit"
-            onChange={handleData}
-          />
+    <form onSubmit={handleSubmit}>
+      <fieldset>
+        <legend>일기 쓰기</legend>
+        <label htmlFor="tit">일기 제목 : </label>
+        <input
+          value={title}
+          type="text"
+          required
+          id="tit"
+          onChange={handleData}
+        />
 
-          <label htmlFor="cont">일기 내용 : </label>
-          <textarea
-            value={text}
-            id="cont"
-            required
-            onChange={handleData}
-          ></textarea>
+        <label htmlFor="cont">일기 내용 : </label>
+        <textarea
+          value={text}
+          id="cont"
+          required
+          onChange={handleData}
+        ></textarea>
 
-          <button type="submit">저장하기</button>
-        </fieldset>
-      </form>
-    </>
+        <button type="submit">저장하기</button>
+      </fieldset>
+    </form>
   );
 };
 
